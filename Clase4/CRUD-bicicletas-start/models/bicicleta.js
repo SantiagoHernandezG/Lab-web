@@ -22,4 +22,25 @@ let b2 = new Bicicleta(1, 'rojo', 'bmx', [19.282447, -99.138079])
 Bicicleta.add(b1)
 Bicicleta.add(b2)
 
+//Eliminar
+Bicicleta.findById = function(aBiciId){
+    let aBici = Bicicleta.allBicis.find ( x=> x.Id == aBiciId)
+    if(aBici){
+        return aBici
+    }else{
+        throw new Error (`No existe una bici con el id: ${aBiciId}`)
+    }
+}
+
+Bicicleta.removeById = function(aBiciId){
+    for(let i=0; i< Bicicleta.allBicis.length; i++){
+        if(Bicicleta.allBicis[i].id == aBiciId){
+            Bicicleta.allBicis.splice(i,1)
+            break
+        }
+    }
+}
+
+
+
 module.exports = Bicicleta
